@@ -10,6 +10,7 @@ __status__ = "Beta"
 
 import data_io
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import ExtraTreesClassifier
 from sklearn.ensemble import BaggingClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.datasets import make_gaussian_quantiles
@@ -51,16 +52,16 @@ def main():
 
     print bcolors.OKGREEN + "Training Dataset" + bcolors.OKGREEN
 
-    # check over here , you can find the algoritmes at http://scikit-learn.org/stable/modules/ensemble.html
+    # check over here , you can find the algorithms at http://scikit-learn.org/stable/modules/ensemble.html
 
     # random forest
-    #classifier = RandomForestClassifier(n_estimators=300,  verbose=2,n_jobs=-1,min_samples_split=10,random_state=1)
+    #classifier = RandomForestClassifier(n_estimators=100,  verbose=2,n_jobs=-1,min_samples_split=10,random_state=1)
 
-    # extra Trees (better then random forest)
-    #classifier = ExtraTreesClassifier(n_estimators=250,random_state=0)
+    # extra Trees (better then random forest) (best tiil now!)
+    classifier = ExtraTreesClassifier(n_estimators=200,  verbose=2,n_jobs=-1,min_samples_split=10,random_state=1)
 
     # Adaboost
-    classifier = AdaBoostClassifier(DecisionTreeClassifier(max_depth=2),n_estimators=600,learning_rate=1)
+    #classifier = AdaBoostClassifier(DecisionTreeClassifier(max_depth=2),n_estimators=600,learning_rate=1)
 
 
 
