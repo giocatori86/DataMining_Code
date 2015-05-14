@@ -1,6 +1,6 @@
 {
-    "model_path":      "/Users/Sander/Desktop/data/basicPythonBenchmark.pickle",
-    "submission_path": "/Users/Sander/Desktop/data/basicPythonBenchmark.csv",
+    "model_path":      "/Users/Sander/Desktop/data/model.pickle",
+    "submission_path": "/Users/Sander/Desktop/data/submission.csv",
     "train_path":      "/Users/Sander/Desktop/data/trainVU.csv",
     "test_path":       "/Users/Sander/Desktop/data/testVU.csv"
 }
