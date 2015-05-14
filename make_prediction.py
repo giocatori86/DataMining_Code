@@ -20,6 +20,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import GradientBoostingClassifier
 
 
+
 def main():
     class bcolors:
         HEADER = '\033[95m'
@@ -37,7 +38,7 @@ def main():
     train = data_io.read_train()
     train.fillna(0, inplace=True)
 
-    train_sample = train[:100000].fillna(value=0)       # change the samplesize over here
+    train_sample = train[:1250000].fillna(value=0)       # change the samplesize over here
 
     # list of features that can be removed if you want
     feature_names = list(train_sample.columns)
@@ -55,10 +56,10 @@ def main():
     # check over here , you can find the algorithms at http://scikit-learn.org/stable/modules/ensemble.html
 
     # random forest
-    #classifier = RandomForestClassifier(n_estimators=100,  verbose=2,n_jobs=-1,min_samples_split=10,random_state=1)
+    classifier = RandomForestClassifier(n_estimators=3200,  verbose=2,n_jobs=-1,min_samples_split=10,random_state=1)
 
-    # extra Trees (better then random forest) (best tiil now!)
-    classifier = ExtraTreesClassifier(n_estimators=300,  verbose=2,n_jobs=-1,min_samples_split=10,random_state=1)
+    # extra Trees (better then random forest) (best till now!)
+    #classifier = ExtraTreesClassifier(n_estimators=300,  verbose=2, n_jobs=-1, min_samples_split=10,random_state=1)
 
     # Adaboost
     #classifier = AdaBoostClassifier(DecisionTreeClassifier(max_depth=2),n_estimators=600,learning_rate=1)
@@ -69,8 +70,9 @@ def main():
     #classifier = BaggingClassifier(KNeighborsClassifier(), max_samples=0.5, max_features=0.5)
 
 
-    # Gradient Boosting
-    # classifier = GradientBoostingClassifier(n_estimators=100, learn_rate=1.0,max_depth=1, random_state=0
+    # Gradient Boosting  BEST SOLUTION (i suppose,will try tomorrow)
+    # classifier = GradientBoostingClassifier(loss='deviance', learning_rate=0.1,  n_estimators=100,  subsample=1.0, min_samples_split=2, min_samples_leaf=1, max_depth=3, init=None, random_state=None, max_features=None, verbose=0)
+
 
     classifier.fit(features, target)
 
