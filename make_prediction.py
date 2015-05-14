@@ -58,7 +58,7 @@ def main():
     #classifier = RandomForestClassifier(n_estimators=100,  verbose=2,n_jobs=-1,min_samples_split=10,random_state=1)
 
     # extra Trees (better then random forest) (best tiil now!)
-    classifier = ExtraTreesClassifier(n_estimators=200,  verbose=2,n_jobs=-1,min_samples_split=10,random_state=1)
+    classifier = ExtraTreesClassifier(n_estimators=300,  verbose=2,n_jobs=-1,min_samples_split=10,random_state=1)
 
     # Adaboost
     #classifier = AdaBoostClassifier(DecisionTreeClassifier(max_depth=2),n_estimators=600,learning_rate=1)
@@ -93,9 +93,12 @@ def main():
     classifier = data_io.load_model()
 
     print bcolors.OKGREEN + "Make Predictions" + bcolors.OKGREEN
-
     predictions = classifier.predict_proba(features)[:,1]
+
+    print bcolors.OKBLUE + "Calculate NDcg" + bcolors.OKBLUE
     predictions = list(-1.0*predictions)
+
+    print bcolors.OKBLUE +  "Sort Predictions" + bcolors.OKBLUE
     recommendations = zip(test["srch_id"], test["prop_id"], predictions)
 
     print bcolors.OKGREEN + "Writing Predictions To Outputfile" + bcolors.OKGREEN
